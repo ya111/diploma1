@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "685219398487",
+    "firebase_url": "https://saenco2-1591281533244.firebaseio.com",
+    "project_id": "saenco2-1591281533244",
+    "storage_bucket": "saenco2-1591281533244.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685219398487:android:00ae6ea14fec74d8d23412",
+        "android_client_info": {
+          "package_name": "com.ppanichkin.saenco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685219398487-1lhpecjp99t4n10ml2l1lk081jpti1vp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIKpsnjM030YTQtsvJVxfG8W97ccvTmI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685219398487-1lhpecjp99t4n10ml2l1lk081jpti1vp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -88,7 +88,6 @@ public class LoginActivity extends AppCompatActivity implements
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
             // Signed in successfully, show authenticated UI.
             mGoogleSignInAccount = account;
             updateUI(account);
@@ -161,6 +160,11 @@ public class LoginActivity extends AppCompatActivity implements
                 Intent intent2 = new Intent(this, ChatActivity.class);
                 intent2.putExtra("SendEmail", mGoogleSignInAccount.getEmail());
                 startActivity(intent2);
+                break;
+            case R.id.move_to_infoactivity_button:
+                Intent intent3 = new Intent(this, InfoActivity.class);
+                intent3.putExtra("SendEmail", mGoogleSignInAccount.getEmail());
+                startActivity(intent3);
         }
     }
 }

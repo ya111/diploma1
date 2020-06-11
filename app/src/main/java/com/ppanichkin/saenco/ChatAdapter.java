@@ -1,5 +1,8 @@
 package com.ppanichkin.saenco;
 
+import android.annotation.SuppressLint;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,10 +53,13 @@ class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         return CHAT_START;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Chat chat = mDataSet.get(position);
-        holder.mTextView.setText(chat.getMessage());
+        String text = "<font color=#ffffff>" + chat.getId() +  "</font> <br/> <font color=#ffcc22>" + chat.getMessage() + "</font>";
+        holder.mTextView.setText(Html.fromHtml(text));
+        //holder.mTextView.setText(chat.getId() + System.lineSeparator() + chat.getMessage());
     }
 
     @Override

@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.ppanichkin.saenco.SendMailActivity"/>
+        <activity android:name="com.ppanichkin.saenco.InfoActivity"/>
         <activity android:name="com.ppanichkin.saenco.ChatActivity"/>
         <activity android:name="com.ppanichkin.saenco.LoginActivity">
             <intent-filter>

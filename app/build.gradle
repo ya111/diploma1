@@ -62,6 +62,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.3.0'
     //noinspection GradleCompatible
     implementation 'androidx.cardview:cardview:1.0.0'
-
+    implementation 'org.jsoup:jsoup:1.13.1'
     testImplementation 'junit:junit:4.12'
 }

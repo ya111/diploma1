@@ -3,7 +3,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_grey_700"
+    android:background="@drawable/background4"
     android:orientation="vertical"
     android:weightSum="4"
     tools:context=".LoginActivity">
@@ -56,23 +56,25 @@
 
         <Button
             android:id="@+id/move_to_sendmailactivity_button"
-            android:layout_width="wrap_content"
+            android:layout_width="192dp"
             android:layout_height="wrap_content"
             android:text="@string/move_to_sendmailactivity_button"
             android:theme="@style/ThemeOverlay.MyDarkButton"
             android:visibility="visible"
             tools:visibility="visible" />
+
         <Button
             android:id="@+id/move_to_chatactivity_button"
-            android:layout_width="wrap_content"
+            android:layout_width="193dp"
             android:layout_height="wrap_content"
             android:text="@string/move_to_chatactivity_button"
             android:theme="@style/ThemeOverlay.MyDarkButton"
             android:visibility="visible"
             tools:visibility="visible" />
+
         <Button
             android:id="@+id/move_to_infoactivity_button"
-            android:layout_width="wrap_content"
+            android:layout_width="193dp"
             android:layout_height="wrap_content"
             android:text="@string/move_to_infoactivity_button"
             android:theme="@style/ThemeOverlay.MyDarkButton"

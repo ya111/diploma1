@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,11 +33,12 @@ public class ChatActivity extends Activity {
     private EditText metText;
     private Button mbtSent;
     private DatabaseReference mFirebaseRef;
-
+    private InternetDetector internetDetector;
     private List<Chat> mChats;
     private RecyclerView mRecyclerView;
     private ChatAdapter mAdapter;
     private String mId;
+    private GoogleSignInAccount mGoogleSignInAccount;
 
     @SuppressLint("HardwareIds")
     @Override
@@ -46,8 +50,10 @@ public class ChatActivity extends Activity {
         mbtSent = (Button) findViewById(R.id.btSent);
         mRecyclerView = (RecyclerView) findViewById(R.id.rvChat);
         mChats = new ArrayList<>();
-
-        mId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        Log.v("accaaa",account.getDisplayName());
+        //mId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        mId = account.getDisplayName();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //mRecyclerView.setItemAnimator(new SlideInOutLeftItemAnimator(mRecyclerView));
         mAdapter = new ChatAdapter(mChats, mId);
@@ -56,6 +62,10 @@ public class ChatActivity extends Activity {
         /**
          * Firebase - Inicialize
          */
+        internetDetector = new InternetDetector(getApplicationContext());
+        if (internetDetector.checkMobileInternetConn()) {
+
+        }
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         mFirebaseRef = database.getReference("message");
 
@@ -64,14 +74,16 @@ public class ChatActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String message = metText.getText().toString();
-
-                if (!message.isEmpty()) {
+                if ( message.trim().length() > 1) {
                     /**
                      * Firebase - Send message
                      */
                     mFirebaseRef.push().setValue(new Chat(message, mId));
                 }
-
+                else {
+                    Toast.makeText(ChatActivity.this,
+                            "Too short", Toast.LENGTH_LONG).show();
+                }
                 metText.setText("");
             }
         });
@@ -108,9 +120,7 @@ public class ChatActivity extends Activity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (dataSnapshot != null && dataSnapshot.getValue() != null) {
                     try {
-
                         Chat model = dataSnapshot.getValue(Chat.class);
-
                         mChats.add(model);
                         mRecyclerView.scrollToPosition(mChats.size() - 1);
                         mAdapter.notifyItemInserted(mChats.size() - 1);

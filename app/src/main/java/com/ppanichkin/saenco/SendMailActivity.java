@@ -257,7 +257,7 @@ public class SendMailActivity extends AppCompatActivity {
                     .setApplicationName(getResources().getString(R.string.app_name))
                     .build();
             this.activity = activity;
-        }
+    }
 
         @Override
         protected String doInBackground(Void... params) {
